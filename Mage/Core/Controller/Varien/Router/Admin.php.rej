@@ -1,0 +1,18 @@
+--- app/code/core/Mage/Core/Controller/Varien/Router/Admin.php
++++ app/code/core/Mage/Core/Controller/Varien/Router/Admin.php
+@@ -129,4 +129,15 @@
+         }
+         parent::collectRoutes($configArea, $useRouterName);
+     }
++
++    /**
++     * Check if current controller instance is allowed in current router.
++     * 
++     * @param Mage_Core_Controller_Varien_Action $controllerInstance
++     * @return boolean
++     */
++    protected function _validateControllerInstance($controllerInstance)
++    {
++        return true;
++    }
+ }
