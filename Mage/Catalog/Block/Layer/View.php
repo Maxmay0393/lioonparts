@@ -115,7 +115,7 @@ class Mage_Catalog_Block_Layer_View extends Mage_Core_Block_Template
         $categoryBlock = $this->getLayout()->createBlock($this->_categoryBlockName)
             ->setLayer($this->getLayer())
             ->init();
-        
+
         $this->setChild('layer_state', $stateBlock);
         $this->setChild('category_filter', $categoryBlock);
 

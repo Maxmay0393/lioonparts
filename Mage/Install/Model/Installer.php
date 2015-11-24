@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Install
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -139,19 +139,17 @@ class Mage_Install_Model_Installer extends Varien_Object
      * @param   array $data
      * @return  Mage_Install_Model_Installer
      */
-	public function installConfig($data)
-	{
-		$data['db_active'] = true;
+    public function installConfig($data)
+    {
+        $data['db_active'] = true;
 
-		$data = Mage::getSingleton('install/installer_db')->checkDbConnectionData($data);
-		//Added by MagenTech.Com : to install sample DB for quickstart package
-		Mage::getSingleton('install/installer_Sample')->installSampleDB($data);
-		//end added by MagenTech.Com
-		Mage::getSingleton('install/installer_config')
-			->setConfigData($data)
-			->install();
-		return $this;
-	}
+        $data = Mage::getSingleton('install/installer_db')->checkDbConnectionData($data);
+
+        Mage::getSingleton('install/installer_config')
+            ->setConfigData($data)
+            ->install();
+        return $this;
+    }
 
     /**
      * Database installation
@@ -206,11 +204,11 @@ class Mage_Install_Model_Installer extends Varien_Object
         if (!empty($locale['timezone'])) {
             $setupModel->setConfigData(Mage_Core_Model_Locale::XML_PATH_DEFAULT_TIMEZONE, $locale['timezone']);
         }
-        /*if (!empty($locale['currency'])) {
+        if (!empty($locale['currency'])) {
             $setupModel->setConfigData(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE, $locale['currency']);
             $setupModel->setConfigData(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_DEFAULT, $locale['currency']);
             $setupModel->setConfigData(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_ALLOW, $locale['currency']);
-        }*/
+        }
 
         return $this;
     }
