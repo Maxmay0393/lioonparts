@@ -26,4 +26,3 @@ else
         $PHP_BIN $CRONSCRIPT$MODE &
     fi
 fi
-date >> /var/www/html/lionparts/var/log/cron.log;/usr/bin/php -f /var/www/html/lionparts/cron.php >> /var/www/html/lionparts/var/log/cron.log;

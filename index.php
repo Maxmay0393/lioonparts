@@ -60,21 +60,20 @@ if (!file_exists($mageFilename)) {
     }
     exit;
 }
-//$allowedIps=array('80.78.40.163','14.141.175.106');
-//if (file_exists($maintenanceFile)&&(!in_array($_SERVER['REMOTE_ADDR'],$allowedIps))) {
-////    include_once dirname(__FILE__) . '/errors/503.php';
-//    include dirname(__FILE__) . '/maintenance/index.html';
-//    exit;
-//}
+
+if (file_exists($maintenanceFile)) {
+    include_once dirname(__FILE__) . '/errors/503.php';
+    exit;
+}
 
 require_once $mageFilename;
 
-Varien_Profiler::enable();
+#Varien_Profiler::enable();
 
 if (isset($_SERVER['MAGE_IS_DEVELOPER_MODE'])) {
     Mage::setIsDeveloperMode(true);
 }
-#Mage::setIsDeveloperMode(true);
+
 #ini_set('display_errors', 1);
 
 umask(0);
